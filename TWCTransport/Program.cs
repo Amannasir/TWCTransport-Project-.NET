@@ -1,3 +1,4 @@
+using TWCTransport.Business;
 using TWCTransport.Model.Config;
 using TWCTransport.Provider;
 
@@ -9,7 +10,8 @@ var config = builder.Configuration;
 builder.Services.AddControllersWithViews();
 builder.Services.Configure<DataverseConfig>(config.GetSection(nameof(DataverseConfig)));
 builder.Services.AddSingleton<IDataverseProvider, DataverseProvider>();
-builder.Services.AddTransient<IReservationDetailManager, ReservationDetailManager>();
+builder.Services.AddTransient<ITransportRequestManager, TransportRequestManager>();
+builder.Services.AddTransient<IOptionSetManager, OptionSetManager>();
 builder.Services.Configure<DataverseConfig>(builder.Configuration.GetSection("PowerPlatformConfig"));
 
 builder.Services.AddCors();
