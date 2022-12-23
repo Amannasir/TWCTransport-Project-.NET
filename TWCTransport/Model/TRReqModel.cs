@@ -20,6 +20,20 @@
         public string ContactRelationship { get; set; }
 
 
+        public Guid? emergencyId { get; set; }
+       // public string demmofield { get; set; }
+
+        public string emergencyContactName1 { get; set; }
+        public string emergencyContactEmail1 { get; set; }
+        public string emergencyContactNumber1 { get; set; }
+        public string emergencyContactRelationship1 { get; set; }
+
+        public string emergencyContactName2 { get; set; }
+        public string emergencyContactEmail2 { get; set; }
+        public string emergencyContactNumber2 { get; set; }
+        public string emergencyContactRelationship2 { get; set; }
+
+
 
 
 

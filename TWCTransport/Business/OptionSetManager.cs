@@ -106,10 +106,7 @@ namespace TWCTransport.Business
             //string entityName = "ss_transportrequest";
             List<OptionSetModel> contact_titleOptionsetList = GetAllOptionset(entityName, osName);
             //List<OptionSetModel> ceducation_schooltypeOptionsetList = GetAllOptionset(entityName, "ss_educationschooltype");
-
-
-         
-
+       
             return contact_titleOptionsetList;
         }
 
@@ -127,7 +124,7 @@ namespace TWCTransport.Business
             //// var bookAuthorLookup = entity.GetAttributeValue<EntityReference>("mgt_author");
             //entity["ss_contacttitle"] = detail.ContactTitle;
 
-            //detail.Id = await client.CreateAsync(entity);
+            ///detail.Id = await client.CreateAsync(entity);
             return detail;
         }
 

@@ -18,11 +18,14 @@ namespace TWCTransport.Controllers
             OptionSetManager = optionSetManager;
         }
 
-        [HttpGet]
-        public async Task<List<TRReqModel>> GetListAsync() => await this.transportRequestManager.GetListAsync();
+        [HttpGet("{id}")]
+        public async Task<TRReqModel> GetTransportRequestByIdAsync([FromRoute] Guid id) => await this.transportRequestManager.GetTransportRequestByIdAsync(id);
+
+        //[HttpGet("{TransportRequestId}")]
+        //public async Task<List<EmergencyContact>> GetEmergencyContactListAsync([FromRoute] Guid TransportRequestId) => await this.transportRequestManager.GetListAsync(TransportRequestId);
 
         [HttpGet("AllOptionset/{entityName}/{osName}")]
-        public async Task<List<OptionSetModel>> GetOSListAsync(string entityName, string osName) => await this.OptionSetManager.GetListAsync( entityName, osName);
+        public async Task<List<OptionSetModel>> GetOptionSetListAsync(string entityName, string osName) => await this.OptionSetManager.GetListAsync( entityName, osName);
 
         // POST api/<ResversationController>
         [HttpPut("{id}")]
@@ -38,7 +41,7 @@ namespace TWCTransport.Controllers
             return await this.OptionSetManager.CreateAsync(detail);
         }
         [HttpPost]
-        public async Task<TRReqModel> CreateAsync([FromBody] TRReqModel detail)
+        public async Task<TRReqModel> CreateAsync(TRReqModel detail)
         {
 
             return await this.transportRequestManager.CreateAsync(detail);
