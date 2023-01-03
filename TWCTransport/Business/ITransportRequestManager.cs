@@ -4,13 +4,11 @@ namespace TWCTransport.Business
 {
     public interface ITransportRequestManager
     {
-
-        Task<TRReqModel> GetTransportRequestByIdAsync(Guid id);
-        Task<List<TRReqModel>> GetListAsync(Guid TransportRequestId);
- 
-        Task UpdateAsync(TRReqModel trnsReqModelData);
+        Task<TransportRequest> GetTransportRequestByIdAsync(Guid id);
+        Task<List<TransportRequest>> GetListAsync(); 
+        Task UpdateAsync(TransportRequest transportRequest);
         Task DeleteAsync(Guid id);
-        Task<TRReqModel> CreateAsync(TRReqModel trnsReqModelData);
-        Task<TRReqModel> CreateEmergencyContact(TRReqModel trnsReqModelData);
+        Task<TransportRequest> CreateAsync(TransportRequest transportRequest);
+        Task<TransportRequest> CreateEmergencyContact(TransportRequest transportRequest);
     }
 }

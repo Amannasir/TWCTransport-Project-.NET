@@ -19,29 +19,33 @@ namespace TWCTransport.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<TRReqModel> GetTransportRequestByIdAsync([FromRoute] Guid id) => await this.transportRequestManager.GetTransportRequestByIdAsync(id);
+        public async Task<TransportRequest> GetTransportRequestByIdAsync([FromRoute] Guid id)
+        {
+            return await this.transportRequestManager.GetTransportRequestByIdAsync(id);
+        }
+            
 
         //[HttpGet("{TransportRequestId}")]
         //public async Task<List<EmergencyContact>> GetEmergencyContactListAsync([FromRoute] Guid TransportRequestId) => await this.transportRequestManager.GetListAsync(TransportRequestId);
 
         [HttpGet("AllOptionset/{entityName}/{osName}")]
-        public async Task<List<OptionSetModel>> GetOptionSetListAsync(string entityName, string osName) => await this.OptionSetManager.GetListAsync( entityName, osName);
+        public async Task<List<OptionSet>> GetOptionSetListAsync(string entityName, string osName) => await this.OptionSetManager.GetListAsync( entityName, osName);
 
         // POST api/<ResversationController>
         [HttpPut("{id}")]
-        public async Task UpdateAsync([FromBody] TRReqModel detail) => await this.transportRequestManager.UpdateAsync(detail);
+        public async Task UpdateAsync([FromBody] TransportRequest detail) => await this.transportRequestManager.UpdateAsync(detail);
 
         [HttpDelete("{id}")]
         public async Task Deleteasync([FromRoute] Guid id) => await this.transportRequestManager.DeleteAsync(id);
 
         [HttpPost("op")]
-        public async Task<OptionSetModel> CreateOptionsetAsync([FromBody] OptionSetModel detail)
+        public async Task<OptionSet> CreateOptionsetAsync([FromBody] OptionSet detail)
         {
 
             return await this.OptionSetManager.CreateAsync(detail);
         }
         [HttpPost]
-        public async Task<TRReqModel> CreateAsync(TRReqModel detail)
+        public async Task<TransportRequest> CreateAsync(TransportRequest detail)
         {
 
             return await this.transportRequestManager.CreateAsync(detail);

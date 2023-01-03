@@ -18,9 +18,9 @@ namespace TWCTransport.Business
             this.dataverseProvider = dataverseProvider;
             this.client = this.dataverseProvider.GetServiceClient();
         }
-        private static OptionSetModel MapToTRDataverse(Entity entity)
+        private static OptionSet MapToTRDataverse(Entity entity)
         {
-            var result = new OptionSetModel();
+            var result = new OptionSet();
            result.AttributeValue = entity.GetAttributeValue<OptionSetValue>("ss_contacttitle").Value.ToString();
             result.AttributeName = entity.FormattedValues["ss_contacttitle"].ToString();
        
@@ -32,7 +32,7 @@ namespace TWCTransport.Business
             return result;
         }
 
-        public async Task<OptionSetModel> GetByIdAsync(Guid id)
+        public async Task<OptionSet> GetByIdAsync(Guid id)
         {
             var query = new QueryExpression
             {
@@ -48,7 +48,7 @@ namespace TWCTransport.Business
             return  record;
     
         }
-        public List<OptionSetModel> GetAllOptionset(string entityName,string optionAttribute)
+        public List<OptionSet> GetAllOptionset(string entityName,string optionAttribute)
         {
             var items = new List<SelectListItem>();
 
@@ -68,7 +68,7 @@ namespace TWCTransport.Business
 
 
 
-                List<OptionSetModel> resultlist = new List<OptionSetModel>();
+                List<OptionSet> resultlist = new List<OptionSet>();
                 if (response != null && response.Results != null)
 
                 {
@@ -85,7 +85,7 @@ namespace TWCTransport.Business
                         foreach (OptionMetadata option in metadata.OptionSet.Options)
 
                         {
-                            OptionSetModel optionSet = new OptionSetModel();
+                            OptionSet optionSet = new OptionSet();
                             optionSet.OptionSetname = entityName;
                             optionSet.AttributeValue = option.Value.ToString();
                             optionSet.AttributeName = option.Label.UserLocalizedLabel.Label.ToString();
@@ -99,25 +99,25 @@ namespace TWCTransport.Business
            
            
         }
-        public async Task<List<OptionSetModel>> GetListAsync(string entityName, string osName)
+        public async Task<List<OptionSet>> GetListAsync(string entityName, string osName)
         {
           
         
             //string entityName = "ss_transportrequest";
-            List<OptionSetModel> contact_titleOptionsetList = GetAllOptionset(entityName, osName);
-            //List<OptionSetModel> ceducation_schooltypeOptionsetList = GetAllOptionset(entityName, "ss_educationschooltype");
+            List<OptionSet> contact_titleOptionsetList = GetAllOptionset(entityName, osName);
+            //List<OptionSet> ceducation_schooltypeOptionsetList = GetAllOptionset(entityName, "ss_educationschooltype");
        
             return contact_titleOptionsetList;
         }
 
-        public Task UpdateAsync(OptionSetModel optionSetModelData)
+        public Task UpdateAsync(OptionSet OptionSetData)
         {
             throw new NotImplementedException();
        
         }
 
 
-        public async Task<OptionSetModel> CreateAsync(OptionSetModel detail)
+        public async Task<OptionSet> CreateAsync(OptionSet detail)
         {
 
             ///*var*/ entity = new Entity("ss_transportrequest");

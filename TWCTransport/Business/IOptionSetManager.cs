@@ -4,10 +4,10 @@ namespace TWCTransport.Business
 {
     public interface IOptionSetManager
     {
-        Task<OptionSetModel> GetByIdAsync(Guid id);
-        Task<List<OptionSetModel>> GetListAsync(string entityName, string osName);
-        Task UpdateAsync(OptionSetModel optionSetModelData);
-        Task<OptionSetModel> CreateAsync(OptionSetModel detail);
+        Task<OptionSet> GetByIdAsync(Guid id);
+        Task<List<OptionSet>> GetListAsync(string entityName, string osName);
+        Task UpdateAsync(OptionSet OptionSetData);
+        Task<OptionSet> CreateAsync(OptionSet detail);
 
     }
 }
